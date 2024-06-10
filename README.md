@@ -7,7 +7,7 @@ This is a lightweight File Integrity Monitor (FIM) written in Python. It calcula
 * *SHA-512 Hashing*: Uses SHA-512 to ensure the integrity of the monitored files.
 * *Baseline Creation*: Create a new baseline for the files in the specified directory.
 * *Continuous Monitoring*: Continuously monitors the files against the saved baseline.
-* **NEW!** * *Popup Alerts*: Displays popup alerts using Tkinter for any file changes, creations, or deletions.
+* **NEW!** *Popup Alerts*: Displays popup alerts using Tkinter for any file changes, creations, or deletions.
 
 ## Installation
 Clone the Repository:
