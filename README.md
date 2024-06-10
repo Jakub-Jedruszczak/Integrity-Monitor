@@ -1,5 +1,5 @@
 # File Integrity Monitor
-This is a simple File Integrity Monitor (FIM) written in Python. It calculates SHA-512 hashes for files in a specified directory, creates a baseline for monitoring, and continuously checks for any changes, creations, or deletions of files.
+This is a lightweight File Integrity Monitor (FIM) written in Python. It calculates SHA-512 hashes for files in a specified directory, creates a baseline for monitoring, and continuously checks for any changes, creations, or deletions of files.
 
 ---
 
