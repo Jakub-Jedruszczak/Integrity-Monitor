@@ -2,6 +2,14 @@ import os
 import hashlib
 import time
 import json # for the output file
+import tkinter as tk
+from tkinter import messagebox
+
+def show_popup(message, title="Alert"):
+    root = tk.Tk()
+    root.iconify() #hide the root window; root.withdraw() did not work
+    messagebox.showinfo(title, message)
+    root.destroy()
 
 def calculate_file_hash(filepath, chunk_size=8192):
     sha512 = hashlib.sha512() # longer than 256, so fewer collisions
@@ -52,13 +60,19 @@ def monitor_files(directory, baseline_file):
                     current_files[filepath] = file_hash
 
         for filepath, file_hash in current_files.items():
-            if filepath not in baseline:
-                print(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {filepath} has been created!")
-            elif baseline[filepath] != file_hash:
-                print(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {filepath} has changed!!!")
+            if filepath not in baseline: # checks if a new file has been created
+                message = f"{filepath} has been created!"
+                print(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {message}")
+                show_popup(message, "File Created")
+            elif baseline[filepath] != file_hash: # if the file's hash does not match the baseline
+                message = f"{filepath} has changed!"
+                print(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {message}")
+                show_popup(message, "File Modified")
 
         for filepath in set(baseline.keys()) - set(current_files.keys()):
-            print(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {filepath} has been deleted!")
+            message = f"{filepath} has been deleted!"
+            print(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {message}")
+            show_popup(message, "File Deleted")
 
         baseline = current_files
         time.sleep(1)
