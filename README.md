@@ -30,3 +30,6 @@ When prompted, choose:
 
 ### Directory to Monitor:
 The script monitors the root (`.`) directory by default. You can change this by modifying the `directory_to_monitor` variable in the script.
+
+### Baseline file:
+The script creates a `baseline_file.json` file in the root directory by default. Modifty the `baseline_file` variable in the script to change this.
